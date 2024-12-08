@@ -1,4 +1,4 @@
-// ("7605031210:AAGTiIboCT3mxxLO6egJ3Zhkr8LAVcdu6yo")
+// ("")
 // https://github.com/kudmit/florgalerie_bot.git
 package main
 
@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	bot, err := tgbotapi.NewBotAPI("7605031210:AAGTiIboCT3mxxLO6egJ3Zhkr8LAVcdu6yo")
+	bot, err := tgbotapi.NewBotAPI("Token")
 	if err != nil {
 		log.Panic(err)
 	}
