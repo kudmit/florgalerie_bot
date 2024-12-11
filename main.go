@@ -1,5 +1,3 @@
-// ("7605031210:AAGTiIboCT3mxxLO6egJ3Zhkr8LAVcdu6yo")
-// https://github.com/kudmit/florgalerie_bot.git
 package main
 
 import (
@@ -488,7 +486,7 @@ func sendOrderDetailsToAdmin(bot *tgbotapi.BotAPI, adminChatID int64, userChatID
 }
 
 func main() {
-	bot, err := tgbotapi.NewBotAPI("7605031210:AAGTiIboCT3mxxLO6egJ3Zhkr8LAVcdu6yo")
+	bot, err := tgbotapi.NewBotAPI("TOKEN")
 	if err != nil {
 		log.Panic(err)
 	}
@@ -553,7 +551,7 @@ func main() {
 
 				// Удаляем кнопки после выбора
 				removeKeyboard := tgbotapi.NewRemoveKeyboard(true)
-				msg := tgbotapi.NewMessage(chatID, " ") // Здесь текст не важен, можно оставить пустую строку или пробел
+				msg := tgbotapi.NewMessage(chatID, " ") 
 				msg.ReplyMarkup = removeKeyboard
 				bot.Send(msg)
 
@@ -616,8 +614,8 @@ func main() {
 					case "С предоплатой", "Mit Vorauszahlung", "З передоплатою", "With prepayment":
 						sendPrepaymentDetails(bot, chatID, userLanguage[chatID])
 						sendThankYouMessage(bot, chatID, userLanguage[chatID])
-						adminChatID := int64(4367763577084) // Chat ID администратора
-						sendOrderDetailsToAdmin(bot, adminChatID, chatID, userData)
+						/*adminChatID := int64(9999999) // Chat ID администратора
+						sendOrderDetailsToAdmin(bot, adminChatID, chatID, userData)*/
 						// Возвращаем пользователя к началу с кнопкой /start
 						startButton := tgbotapi.NewReplyKeyboard(
 							tgbotapi.NewKeyboardButtonRow(
@@ -627,7 +625,7 @@ func main() {
 						msg := tgbotapi.NewMessage(chatID, " ")
 						msg.ReplyMarkup = startButton
 						bot.Send(msg)
-					case "Без предоплаты", "Ohne Vorauszahlung", "Без передоплати", "Without prepayment":
+					/*case "Без предоплаты", "Ohne Vorauszahlung", "Без передоплати", "Without prepayment":
 						sendNoPrepaymentDetails(bot, chatID, userLanguage[chatID], userData)
 						sendThankYouMessage(bot, chatID, userLanguage[chatID])
 						adminChatID := int64(999999999) // Chat ID администратора
@@ -640,7 +638,7 @@ func main() {
 						)
 						msg := tgbotapi.NewMessage(chatID, " ")
 						msg.ReplyMarkup = startButton
-						bot.Send(msg)
+						bot.Send(msg)*/
 					}
 				default:
 					bot.Send(tgbotapi.NewMessage(chatID, "Please select a valid option."))
